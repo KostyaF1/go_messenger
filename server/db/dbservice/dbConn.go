@@ -3,6 +3,7 @@ package dbservice
 import (
 	"fmt"
 	"go_messenger/server/db"
+	"strings"
 
 	"log"
 
@@ -19,8 +20,9 @@ func OpenConnDB() *gorm.DB {
 	dbinfo := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=%s", db.HostDB, db.PortDB, db.UserDB, db.NameDB, db.PasswordDB, db.SSLModeDB)
 	dbConn, err = gorm.Open("postgres", dbinfo)
 	if err != nil {
-		log.Println("gorm Open connection error: ", err)
+		log.Println("gorm Open connection error: ", strings.ToUpper(err.Error()))
+	} else {
+		log.Println("DB opened ok")
 	}
-	log.Println("DB opened ok")
 	return dbConn
 }
