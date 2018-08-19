@@ -149,7 +149,7 @@ func (u *UserService) DeleteContact(messageIn *userConnections.MessageIn, chanOu
 	chanOut <- &messageOut
 }
 
-//GetUsers method gets all users from DB.
+//GetUsers method get all users from DB.
 func (u *UserService) GetUsers(messageIn *userConnections.MessageIn, chanOut chan<- *serviceModels.MessageOut) {
 	messageOut := serviceModels.MessageOut{Action: messageIn.Action, User: messageIn.User}
 	userList := []models.User{}
